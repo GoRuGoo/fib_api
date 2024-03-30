@@ -5,9 +5,12 @@ services:
     container_name: reverseproxy
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./build/reverseproxy/config/nginx.conf:/etc/nginx/nginx.conf
       - ./build/reverseproxy/log:/var/log/nginx
+      - ./build/key/fib-api.com-key.pem:/etc/certs/fib-api.com-key.pem
+      - ./build/key/fib-api.com.pem:/etc/certs/fib-api.com.pem
     depends_on:
       - api
   api:
