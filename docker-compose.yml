@@ -13,5 +13,7 @@ services:
     container_name: api
     tty: true
     build: ./build/go/
+    expose:
+      - 80
     volumes:
       - ./api:/go/src/api
