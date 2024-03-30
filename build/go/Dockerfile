@@ -6,4 +6,4 @@ WORKDIR /go/src/api
 ADD . /go/src/api
 
 
-EXPOSE 8080
+EXPOSE 80
