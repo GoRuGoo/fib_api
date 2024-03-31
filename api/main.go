@@ -12,6 +12,9 @@ func main() {
   fibonacciUsecase := usecase.CreateFibonacciUsecase(fibonacciRepository)
   fibonacciController := controller.CreateFibonacciController(fibonacciUsecase)
 
-  r := infra.NewRouter(fibonacciController)
+  var controllerList infra.ControllerList
+  infra.SetFibonacciController(&controllerList,fibonacciController)
+
+  r := controllerList.NewRouter()
   r.Run(":80")
 }
