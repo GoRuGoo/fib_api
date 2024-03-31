@@ -5,6 +5,8 @@ import (
 	"fib/interface/controller"
 	"fib/repository"
 	"fib/usecase"
+  "fmt"
+  "os"
 )
 
 func main() {
@@ -16,5 +18,6 @@ func main() {
   infra.SetFibonacciController(&controllerList,fibonacciController)
 
   r := controllerList.NewRouter()
-  r.Run(":80")
+  port := fmt.Sprintf(":%s", os.Getenv("PORT"))
+	r.Run(port)
 }
