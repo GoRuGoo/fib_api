@@ -1,9 +1,13 @@
 package usecase
 
-import "fib/repository"
+import (
+	"errors"
+	"fib/repository"
+	"strconv"
+)
 
 type InterfaceFibonacciUsecase interface{
-  Calculate()(int,error)
+  Calculate(fibonncciStringNnmber string)(int,error)
 }
 
 type fibonacciUsecase struct{
@@ -14,6 +18,26 @@ func CreateFibonacciUsecase(fr repository.InterfaceFibonacciRepository) Interfac
   return &fibonacciUsecase{fr:fr}
 }
 
-func (fc *fibonacciUsecase)Calculate()(int,error){
-  return 3,nil
+func (fc *fibonacciUsecase)Calculate(fibonacciStringNumber string)(int,error){
+  //クエリパラメータは数字を返すので数値に変換
+  fibonacciNumber ,err := strconv.Atoi(fibonacciStringNumber)
+  if err!=nil{
+    return -1,errors.New("Convert error")
+  }
+
+  //適切ではないフィボナッチ数列の番号だったらエラーを返す
+  if fibonacciNumber <= 0 {
+    return -1,errors.New("error")
+  }
+
+  fibonacciTable := make([]int,fibonacciNumber+1)
+  fibonacciTable[1] = 1
+  fibonacciTable[2] = 1
+
+  for i:=3;i<=fibonacciNumber;i++{
+    fibonacciTable[i] = fibonacciTable[i-1] + fibonacciTable[i-2]
+  }
+
+
+  return fibonacciTable[fibonacciNumber],nil
 }
