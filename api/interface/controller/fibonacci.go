@@ -20,6 +20,13 @@ func CreateFibonacciController(uf usecase.InterfaceFibonacciUsecase) InterfaceFi
 }
 
 func (fc *fibonacciController) Calculate(c *gin.Context){
+  fibonacciNumber := c.Query("n")
+  if fibonacciNumber == ""{
+    c.JSON(http.StatusBadRequest,gin.H{"error":"Query parameter does not exist"})
+    return
+  }
+
+
   c.JSON(http.StatusOK,gin.H{"hello":"Hello"})
   return
 }
