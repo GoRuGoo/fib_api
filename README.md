@@ -8,9 +8,9 @@
 
 成果物の確認できるURLはこちら
 
-https://fib-cloud-tokyo-laey36n37q-an.a.run.app
-
 https://fibonacci.gorugoo.com
+
+https://fib-cloud-tokyo-laey36n37q-an.a.run.app
 
 ## Requirement
 
