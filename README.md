@@ -68,6 +68,10 @@ docker compose up -d
 ```
 docker compose exec api go run main.go
 ```
+3. Access
+```
+curl -X GET -H "Content-Type application/json" "https://fib-api.com/fib?n=10"
+```
 
 
 
