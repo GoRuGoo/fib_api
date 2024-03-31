@@ -19,5 +19,7 @@ services:
     build: ./build/go/
     expose:
       - 80
+    environment:
+      PORT: 80
     volumes:
       - ./api:/go/src/api
