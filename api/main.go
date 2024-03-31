@@ -1,14 +1,17 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
+	"fib/infra"
+	"fib/interface/controller"
+	"fib/repository"
+	"fib/usecase"
 )
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, World!!!!\n")
-	})
+  fibonacciRepository := repository.NewFibonacciRepository()
+  fibonacciUsecase := usecase.CreateFibonacciUsecase(fibonacciRepository)
+  fibonacciController := controller.CreateFibonacciController(fibonacciUsecase)
 
-	http.ListenAndServe(":80", nil)
+  r := infra.NewRouter(fibonacciController)
+  r.Run(":80")
 }
