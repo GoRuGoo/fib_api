@@ -31,7 +31,9 @@ func (fc *fibonacciUsecase)Calculate(fibonacciStringNumber string)(*big.Int,erro
     return big.NewInt(-1),errors.New("error")
   }
 
-  fibonacciTable := make([]*big.Int,fibonacciNumber+1)
+  //
+
+  fibonacciTable := make([]*big.Int,fibonacciNumber+2)
   fibonacciTable[1] = big.NewInt(1)
   fibonacciTable[2] = big.NewInt(1)
 
